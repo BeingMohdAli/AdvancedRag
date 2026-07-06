@@ -21,8 +21,10 @@ load_dotenv()
 
 #PDF loader
 
-def pdfLoader(a):
+def pdfLoader(a:str):
     loader = PyPDFLoader(a)
     docs = loader.load()
     for doc in docs:
+       #print 
         print(doc.page_content)
+
