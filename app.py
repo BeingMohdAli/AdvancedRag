@@ -10,7 +10,7 @@
 import chromadb
 chroma_client = chromadb.Client()
 
-collection = chroma_client.get_or_create_collection(name="Advancved RAG")
+collection = chroma_client.get_or_create_collection(name="Advancved_RAG")
 
 
 # Define text documents
@@ -20,5 +20,17 @@ documents = [
     {"id": "doc3", "text": "Goodbye, see you later!"},
 ]
 
+for doc in documents:
+    collection.upsert(ids=[doc["id"]],documents=[doc["text"]])
+
 # Define a query text
-query = "Hello World"
+query = "Hello, World!"
+
+
+results = collection.query(
+    query_texts = [query],
+    n_results=1
+
+    
+)
+print(results)
